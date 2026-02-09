@@ -1,5 +1,3 @@
-# Siry-Intelligence
-Our cutting-edge artificial intelligence named”Siry”, which means “Silly Harmory”.
 # Siry (小锐) - AI聊天室 / Siry - AI Chatroom
 
 [English](#english) | [中文](#中文)
@@ -118,6 +116,7 @@ See the [LICENSE](LICENSE) file for full details, or visit [https://www.gnu.org/
 
 ## ⚠️ 重要声明与注意事项
 
+*   **API密钥暴露：** 本项目将API密钥**直接嵌入在前端代码中**。这对于公开的生产环境**不安全**，仅适用于个人或可信赖的项目。任何能访问该网页的人都可能查看并潜在滥用你的密钥。
 *   **AI生成内容：** 所有回复均由第三方AI模型生成，可能存在不准确、偏见或不适当的内容。请自行判断使用。
 *   **隐私：** 对话通过硅基流动API处理。我们不存储聊天记录于服务器，但可能受API提供商的日志政策约束。
 *   **浏览器指纹：** “返回用户”功能使用的是基于浏览器属性的简易指纹，并非真实IP地址。这并非一个强力的安全措施。
