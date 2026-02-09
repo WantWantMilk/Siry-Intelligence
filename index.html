@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,6 +7,7 @@
     <title>Siry - 小锐聊天室</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤡</text></svg>">
     <style>
+        /* 基础重置与变量 */
         :root {
             --primary-color: rgba(120, 119, 198, 0.85);
             --secondary-color: rgba(154, 130, 219, 0.85);
@@ -29,10 +31,12 @@
             color: var(--text-primary);
             line-height: 1.6;
         }
+        /* 警告：为IE用户跳转 */
         .ie-warning { display: none; }
     </style>
 </head>
 <body>
+    <!-- 专为IE用户显示的警告和跳转链接 -->
     <div class="ie-warning">
         <p>检测到您正在使用旧版浏览器。为了最佳体验，正在为您跳转至<a id="ie-redirect" href="ie.html">兼容模式</a>。</p>
     </div>
@@ -57,6 +61,7 @@
             .main-container { background: rgba(255, 255, 255, 0.92); }
         }
 
+        /* 头部样式 */
         .header {
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             color: var(--text-light);
@@ -74,6 +79,7 @@
         }
         .header p { opacity: 0.9; font-size: 1rem; }
 
+        /* 内容区通用样式 */
         .content-area {
             flex: 1;
             padding: 30px;
@@ -83,6 +89,7 @@
         }
     </style>
 <style>
+        /* 验证界面样式 */
         #authSection { text-align: center; }
         .auth-card {
             background: rgba(255, 255, 255, 0.7);
@@ -132,6 +139,7 @@
         .submit-btn:active { transform: translateY(0); }
         #authHint { margin-top: 20px; min-height: 24px; color: #e74c3c; font-weight: 500; }
 
+        /* 聊天界面样式（默认隐藏） */
         #chatSection { display: none; flex-direction: column; height: 100%; }
         .chat-messages {
             flex: 1;
@@ -196,6 +204,7 @@
         .thinking { opacity: 0.7; font-style: italic; text-align: center; padding: 20px; }
     </style>
 <style>
+        /* 页脚样式 */
         .footer {
             padding: 25px;
             text-align: center;
@@ -215,6 +224,7 @@
         }
         .footer a:hover { background: rgba(120, 119, 198, 0.1); text-decoration: underline; }
 
+        /* 模态框（免责声明）样式 */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -254,6 +264,7 @@
         }
         .modal-close-btn:hover { background: #5a57a5; }
 
+        /* 响应式设计 */
         @media (max-width: 768px) {
             body { padding: 15px; }
             .main-container { min-height: 90vh; border-radius: 20px; }
@@ -268,6 +279,7 @@
     </style>
 </head>
 <body>
+    <!-- 主容器开始 -->
     <div class="main-container">
         <div class="header">
             <h1><span>🤡</span> Siry · 小锐聊天室 <span>✨</span></h1>
@@ -312,6 +324,8 @@
             </div>
         </div>
     </div>
+    <!-- 主容器结束 -->
+<!-- 免责声明模态框 -->
     <div id="legalModal" class="modal-overlay" style="display: none;">
         <div class="modal">
             <h2>⚠️ 法律声明与使用条款</h2>
@@ -332,18 +346,22 @@
         </div>
     </div>
 <script>
+        // ==================== 【请仔细检查并修改此处配置】 ====================
         const CONFIG = {
-            API_KEY: 'sk-xzxelritwcuswjbfgwqtcdqsemtlnluceaurjscdkyezjpik', 
+            API_KEY: 'sk-xzxelritwcuswjbfgwqtcdqsemtlnluceaurjscdkyezjpik', // 你的硅基流动API密钥
             MODEL: 'THUDM/GLM-4-9B-0414', // 你的模型名称
             API_URL: 'https://api.siliconflow.cn/v1/chat/completions',
             SYSTEM_PROMPT: `你是一个名叫Siry（小锐）的AI助手，名字含义是"Silly Harmony"。你兼具幽默感和敏锐的洞察力，像一个小丑一样有趣，但回答问题总是清晰、直接、明快。请全程使用中文与我的朋友进行轻松、友好的对话，回答尽量简洁。`
         };
+        // ====================================================================
 
+        // 口令验证逻辑
         let tryCount = 0;
         const CORRECT_ANSWER = 'harmory';
         const LONG_PIN = 'APENX-92JXL-OQ72J-4625K-NARUTO';
         const STORAGE_KEY = 'siry_auth_token';
 
+        // 生成一个简易的“访客指纹”（模拟IP识别，实际为浏览器指纹）
         function generateVisitorFingerprint() {
             const str = navigator.userAgent + navigator.language + screen.width + screen.height;
             let hash = 0;
@@ -356,7 +374,9 @@
         }
         const visitorId = generateVisitorFingerprint();
 
+        // 页面加载时检查是否已通过验证
         window.onload = function() {
+            // 检测IE浏览器并跳转
             if (window.document.documentMode) {
                 document.querySelector('.ie-warning').style.display = 'block';
                 window.location.href = "ie.html";
@@ -364,9 +384,9 @@
             }
             const savedToken = localStorage.getItem(STORAGE_KEY);
             if (savedToken && savedToken === visitorId) {
-                showChatInterface(); 
+                showChatInterface(); // 如果已验证过，直接进入聊天
             } else {
-                showModal(); 
+                showModal(); // 否则，先显示法律声明
             }
         };
 
@@ -375,6 +395,7 @@
             const hint = document.getElementById('authHint');
             tryCount++;
             if (tryCount <= 3) {
+                // 前三次尝试短答案
                 if (input.toLowerCase() === CORRECT_ANSWER) {
                     authSuccess();
                 } else {
@@ -382,6 +403,7 @@
                     if (tryCount === 3) hint.textContent += ' 三次已用尽，请输入长PIN码。';
                 }
             } else {
+                // 后续尝试长PIN
                 if (input === LONG_PIN) {
                     authSuccess();
                 } else {
@@ -393,7 +415,7 @@
         function authSuccess() {
             document.getElementById('authHint').textContent = '验证成功！正在进入聊天室...';
             document.getElementById('authHint').style.color = '#27ae60';
-            localStorage.setItem(STORAGE_KEY, visitorId); 
+            localStorage.setItem(STORAGE_KEY, visitorId); // 保存验证状态
             setTimeout(showChatInterface, 800);
         }
 
@@ -457,16 +479,19 @@
                 msgEl.querySelector('.message-content').style.fontStyle = 'normal';
             }
         }
+        // 输入框回车发送
         document.getElementById('userInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') sendMessage();
         });
 
+        // 模态框（法律声明）控制
         function showModal() {
             document.getElementById('legalModal').style.display = 'flex';
         }
         function closeModal() {
             document.getElementById('legalModal').style.display = 'none';
         }
+        // 点击模态框外部关闭
         document.getElementById('legalModal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
