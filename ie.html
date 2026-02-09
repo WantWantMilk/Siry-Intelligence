@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Siry Chat - 兼容模式</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background: #f0f0f0; }
+        #chatBox { border: 1px solid #999; height: 400px; overflow-y: scroll; padding: 10px; background: white; margin-bottom: 10px; }
+        .userMsg { text-align: right; color: blue; margin: 5px; }
+        .botMsg { text-align: left; color: green; margin: 5px; }
+        input, button { padding: 10px; margin: 5px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2>🤖 Siry 聊天室 (兼容模式)</h2>
+    <p><strong>注意：</strong>此页面为旧版浏览器优化，功能完整，样式简化。</p>
+    <div id="chatBox">
+        <div class="botMsg"><strong>Siry:</strong> 你好！我已进入兼容模式。我们可以开始聊天了。</div>
+    </div>
+    <input type="text" id="userInput" placeholder="输入消息..." style="width: 70%;">
+    <button onclick="sendMsg()">发送</button>
+    <p style="margin-top: 30px; font-size: 0.9em; color: #666;">
+        <a href="index.html">← 返回主界面</a> | 
+        AI生成内容可能不准确。基于AGPL-3.0许可证。
+    </p>
+
+    <script>
+        // ======== 配置（必须与主页面一致！） ========
+        const API_KEY = 'sk-xzxelritwcuswjbfgwqtcdqsemtlnluceaurjscdkyezjpik';
+        const MODEL = 'THUDM/GLM-4-9B-0414';
+        const SYSTEM_PROMPT = `你是Siry（小锐），一个幽默又敏锐的助手。请用中文简短回答。`;
+        // ===========================================
+        function sendMsg() {
+            const input = document.getElementById('userInput');
+            const msg = input.value;
+            if (!msg) return;
+            const chatBox = document.getElementById('chatBox');
+            chatBox.innerHTML += `<div class="userMsg"><strong>你:</strong> ${msg}</div>`;
+            input.value = '';
+            chatBox.innerHTML += `<div class="botMsg"><strong>Siry:</strong> 思考中...</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+            fetch('https://api.siliconflow.cn/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + API_KEY,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: MODEL,
+                    messages: [
+                        {role: "system", content: SYSTEM_PROMPT},
+                        {role: "user", content: msg}
+                    ]
+                })
+            })
+            .then(r => r.json())
+            .then(d => {
+                const reply = d.choices && d.choices[0] ? d.choices[0].message.content : '出错';
+                chatBox.lastChild.innerHTML = `<strong>Siry:</strong> ${reply}`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(e => {
+                chatBox.lastChild.innerHTML = `<strong>Siry:</strong> 网络错误。`;
+            });
+        }
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMsg();
+        });
+    </script>
+</body>
+</html>
