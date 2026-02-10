@@ -3,57 +3,75 @@
     'use strict';
 
     // ==================== 背景图片配置 ====================
-    // 请在此处添加您的图片链接，并为其命名
     const backgroundOptions = [
         {
             id: 'none',
             name: '🔄 无背景 (使用主题默认)',
-            url: null // 无背景，使用主题自带的渐变
+            url: null
         },
         {
-            id: 'mountains', // 示例1：自然风景
-            name: '远山',
+            id: 'full_transparent',
+            name: '🪟 全透明 (纯净展示)',
+            url: null
+        },
+        {
+            id: 'mountains',
+            name: '远方的山峦',
             url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
         },
         {
-            id: 'abstract', // 示例2：抽象色彩
-            name: '漩涡鸣人',
-            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/106_260201_wp_jp.jpg'
-        },
+            id: 'narutoweishou',
+            name: '漩涡鸣人-尾兽化',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/43_241010_JP.jpg'
+        }
         {
-            id: 'night_sky', // 示例3：夜空
-            name: '星空',
-            url: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w-1350&q=80'
+            id: ' narutoone',
+            name: '漩涡鸣人1',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/91_251101_wp_jp.jpg'
+        }
+        {
+            id: 'narutotwo',
+            name: '漩涡鸣人2',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/106_260201_wp_jp.jpg'
+        }
+        {
+            id: 'narutothree',
+            name: '漩涡鸣人3',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/83_250901_wp_jp.jpg'
+        }
+        {
+            id: 'mingzuo',
+            name: '漩涡鸣人·宇智波佐助',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/78_250801_wp_jp.jpg'
+        }
+        {
+            id: ' Kakashi',
+            name: '旗木卡卡西',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/85_250915_jp.jpg'
         }
         // 您可以继续在此处添加更多背景...
         // 格式：{ id: '自定义英文ID', name: '🌠 显示名称', url: '您的图片链接' }
     ];
 
-    // ==================== 核心逻辑 ====================
+    // ==================== 核心函数 ====================
     function initBackgroundManager() {
-        // 1. 创建背景选择器UI
         createBackgroundSelector();
-        
-        // 2. 加载已保存的背景设置
         const savedBg = localStorage.getItem('siry-background') || 'none';
         setBackground(savedBg);
     }
 
     function createBackgroundSelector() {
-        // 将选择器添加到主题选择器旁边
         const themeContainer = document.getElementById('theme-selector-container');
         if (!themeContainer) {
-            // 如果主题选择器尚未加载，稍后重试
             setTimeout(createBackgroundSelector, 100);
             return;
         }
 
-        // 创建背景选择器
         const bgContainer = document.createElement('div');
         bgContainer.id = 'background-selector-container';
         bgContainer.style.cssText = `
             position: absolute;
-            top: 60px; /* 放在主题选择器下方 */
+            top: 60px;
             right: 20px;
             z-index: 1000;
         `;
@@ -75,7 +93,6 @@
             min-width: 180px;
         `;
 
-        // 添加选项
         backgroundOptions.forEach(bg => {
             const option = document.createElement('option');
             option.value = bg.id;
@@ -83,7 +100,6 @@
             select.appendChild(option);
         });
 
-        // 切换事件
         select.addEventListener('change', function() {
             setBackground(this.value);
             localStorage.setItem('siry-background', this.value);
@@ -92,7 +108,6 @@
         bgContainer.appendChild(select);
         themeContainer.parentNode.appendChild(bgContainer);
 
-        // 移动端适配
         if (window.innerWidth <= 768) {
             bgContainer.style.top = '50px';
             bgContainer.style.right = '10px';
@@ -103,20 +118,66 @@
     }
 
     function setBackground(backgroundId) {
-        // 找到选中的背景配置
         const bgConfig = backgroundOptions.find(bg => bg.id === backgroundId) || backgroundOptions[0];
-        
-        // 获取或创建样式标签
         let styleTag = document.getElementById('dynamic-background-style');
         if (!styleTag) {
             styleTag = document.createElement('style');
             styleTag.id = 'dynamic-background-style';
             document.head.appendChild(styleTag);
         }
+
         // 动态生成CSS
         let cssRules = '';
-        if (bgConfig.url) {
-            // 高透明度、通透风格
+        
+        // 情况1：全透明模式
+        if (backgroundId === 'full_transparent') {
+            cssRules = `
+                body.theme-active {
+                    background-image: var(--current-background-image) !important;
+                    background-size: cover !important;
+                    background-position: center !important;
+                    background-attachment: fixed !important;
+                    background-repeat: no-repeat !important;
+                }
+                body.theme-active .main-container,
+                body.theme-active .chat-messages,
+                body.theme-active .auth-card,
+                body.theme-active input {
+                    backdrop-filter: none !important;
+                    -webkit-backdrop-filter: none !important;
+                }
+                body.theme-active .main-container {
+                    background: rgba(255, 255, 255, 0.05) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                }
+                body.theme-active .chat-messages,
+                body.theme-active .auth-card {
+                    background: rgba(255, 255, 255, 0.03) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                }
+                body.theme-active input,
+                body.theme-active .pin-input,
+                body.theme-active .chat-input {
+                    background: rgba(255, 255, 255, 0.08) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+                    color: var(--text) !important;
+                }
+                body.theme-active .user-message {
+                    background: linear-gradient(135deg, rgba(106, 137, 204, 0.7), rgba(74, 105, 189, 0.7)) !important;
+                }
+                body.theme-active .bot-message {
+                    background: rgba(255, 255, 255, 0.15) !important;
+                }
+                body.theme-active .header {
+                    background: linear-gradient(90deg, rgba(120, 119, 198, 0.65), rgba(154, 130, 219, 0.65)) !important;
+                }
+                body.theme-active .footer {
+                    background: rgba(255, 255, 255, 0.03) !important;
+                }
+            `;
+        }
+        // 情况2：选择了具体的背景图片URL
+        else if (bgConfig.url) {
             cssRules = `
                 body.theme-active {
                     background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url("${bgConfig.url}") !important;
@@ -126,7 +187,6 @@
                     background-repeat: no-repeat !important;
                     background-color: transparent !important;
                 }
-                /* 降低界面所有主要构件的不透明度 */
                 body.theme-active .main-container {
                     background: rgba(255, 255, 255, 0.08) !important;
                     backdrop-filter: blur(20px) saturate(160%) !important;
@@ -158,18 +218,25 @@
                     background: rgba(255, 255, 255, 0.1) !important;
                 }
             `;
-        } else {
-            // 选择“无背景”时，彻底移除图片
+        }
+        // 情况3：选择了“无背景”
+        else {
             cssRules = `
                 body.theme-active {
                     background-image: none !important;
                 }
             `;
         }
-        styleTag.textContent = cssRules;
+
+        // 保存背景图URL到CSS变量，供“全透明”模式使用
+        if (bgConfig.url) {
+            document.body.style.setProperty('--current-background-image', `url("${bgConfig.url}")`);
+        } else if (backgroundId !== 'full_transparent') {
+            document.body.style.removeProperty('--current-background-image');
+        }
+
         styleTag.textContent = cssRules;
         
-        // 更新选择器显示
         const selector = document.getElementById('background-selector');
         if (selector) selector.value = backgroundId;
 
