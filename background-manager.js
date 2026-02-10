@@ -113,37 +113,60 @@
             styleTag.id = 'dynamic-background-style';
             document.head.appendChild(styleTag);
         }
-
-        // 动态生成CSS - 使用高优先级规则
+        // 动态生成CSS
         let cssRules = '';
         if (bgConfig.url) {
-            // 【核心修正】为body本身直接添加背景，并叠加白色遮罩确保文字可读
+            // 高透明度、通透风格
             cssRules = `
                 body.theme-active {
-                    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url("${bgConfig.url}") !important;
+                    background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url("${bgConfig.url}") !important;
                     background-size: cover !important;
                     background-position: center !important;
                     background-attachment: fixed !important;
                     background-repeat: no-repeat !important;
-                    /* 保留主题原有的渐变作为后备色 */
                     background-color: transparent !important;
                 }
-                /* 增强主容器的玻璃通透感，以适配背景图 */
+                /* 降低界面所有主要构件的不透明度 */
                 body.theme-active .main-container {
-                    background: rgba(255, 255, 255, 0.18) !important;
-                    backdrop-filter: blur(25px) saturate(180%) !important;
-                    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+                    background: rgba(255, 255, 255, 0.08) !important;
+                    backdrop-filter: blur(20px) saturate(160%) !important;
+                    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+                }
+                body.theme-active .chat-messages,
+                body.theme-active .auth-card {
+                    background: rgba(255, 255, 255, 0.1) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                }
+                body.theme-active input,
+                body.theme-active .pin-input,
+                body.theme-active .chat-input {
+                    background: rgba(255, 255, 255, 0.15) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+                    color: var(--text) !important;
+                }
+                body.theme-active .user-message {
+                    background: linear-gradient(135deg, rgba(106, 137, 204, 0.85), rgba(74, 105, 189, 0.85)) !important;
+                }
+                body.theme-active .bot-message {
+                    background: rgba(255, 255, 255, 0.2) !important;
+                }
+                body.theme-active .header {
+                    background: linear-gradient(90deg, rgba(120, 119, 198, 0.8), rgba(154, 130, 219, 0.8)) !important;
+                }
+                body.theme-active .footer {
+                    background: rgba(255, 255, 255, 0.1) !important;
                 }
             `;
         } else {
-            // 选择“无背景”时，彻底移除图片并恢复主题
+            // 选择“无背景”时，彻底移除图片
             cssRules = `
                 body.theme-active {
                     background-image: none !important;
                 }
             `;
         }
-
+        styleTag.textContent = cssRules;
         styleTag.textContent = cssRules;
         
         // 更新选择器显示
