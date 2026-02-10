@@ -12,13 +12,13 @@
         },
         {
             id: 'mountains', // 示例1：自然风景
-            name: '🏔️ 远山',
+            name: '远山',
             url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
         },
         {
             id: 'abstract', // 示例2：抽象色彩
-            name: '🎨 抽象色彩',
-            url: 'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
+            name: '漩涡鸣人',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/106_260201_wp_jp.jpg'
         },
         {
             id: 'night_sky', // 示例3：夜空
