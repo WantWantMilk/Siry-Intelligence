@@ -1,0 +1,140 @@
+/* themes.css - Siry 主题系统 */
+/* 注意：请将此文件链接到index.html的<head>中 */
+
+/* ========== 主题1: Colourful (优化原主题) ========== */
+.theme-colourful {
+    --primary: rgba(120, 119, 198, 0.85);
+    --secondary: rgba(154, 130, 219, 0.85);
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --text: #333;
+    --text-light: #fff;
+    --bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --radius: 24px;
+    --input-radius: 50px;
+    --border-width: 1px;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --accent: #6a89cc;
+}
+
+/* ========== 主题2: Aero (Windows 7 玻璃风格) ========== */
+.theme-aero {
+    --primary: rgba(160, 180, 230, 0.7);
+    --secondary: rgba(180, 200, 240, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --text: #2d3748;
+    --text-light: #fff;
+    --bg: linear-gradient(135deg, #d4e1f5 0%, #aec3e6 100%);
+    --radius: 8px; /* 小圆角 */
+    --input-radius: 20px;
+    --border-width: 1px;
+    --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --accent: #4a6bc2;
+    /* Aero 特有玻璃效果增强 */
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+}
+
+/* ========== 主题3: Elegant (优雅毛玻璃) ========== */
+.theme-elegant {
+    --primary: rgba(255, 255, 255, 0.9);
+    --secondary: rgba(240, 240, 245, 0.9);
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --text: #444;
+    --text-light: #555;
+    --bg: linear-gradient(135deg, #f9f7fe 0%, #e6e4f0 100%);
+    --radius: 32px; /* 大圆角 */
+    --input-radius: 60px;
+    --border-width: 1.5px;
+    --font: 'Georgia', 'Times New Roman', 'PingFang SC', serif;
+    --shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    --accent: #a99fd1;
+    /* 更柔和的毛玻璃 */
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+}
+
+/* ========== 主题4: Metro (Windows 10 现代风格) ========== */
+.theme-metro {
+    --primary: rgba(0, 120, 215, 0.95);
+    --secondary: rgba(0, 90, 180, 0.95);
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(0, 0, 0, 0.15);
+    --text: #000;
+    --text-light: #fff;
+    --bg: linear-gradient(135deg, #f2f2f2 0%, #e5e5e5 100%);
+    --radius: 0; /* 直角 */
+    --input-radius: 0;
+    --border-width: 2px;
+    --font: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --accent: #0078d7;
+    /* 边框强调 */
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ========== 将CSS变量应用到实际元素 ========== */
+/* 这些样式会智能覆盖原样式，不影响布局 */
+.theme-active body {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    font-family: var(--font) !important;
+    transition: all 0.5s ease !important;
+}
+
+.theme-active .main-container {
+    background: var(--glass-bg) !important;
+    border: var(--border-width) solid var(--glass-border) !important;
+    border-radius: var(--radius) !important;
+    backdrop-filter: var(--backdrop-filter, blur(20px)) !important;
+    -webkit-backdrop-filter: var(---webkit-backdrop-filter, blur(20px)) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+.theme-active .header {
+    background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+    color: var(--text-light) !important;
+}
+
+.theme-active .chat-messages {
+    background: rgba(255, 255, 255, var(--msg-bg-alpha, 0.5)) !important;
+    border-radius: calc(var(--radius) - 10px) !important;
+}
+
+.theme-active input,
+.theme-active .pin-input,
+.theme-active .chat-input {
+    border-radius: var(--input-radius) !important;
+    border: var(--border-width) solid var(--glass-border) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    font-family: var(--font) !important;
+}
+
+.theme-active .submit-btn,
+.theme-active #sendBtn {
+    background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+}
+
+.theme-active .user-message {
+    background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 80%, #4a69bd)) !important;
+}
+
+/* Metro主题特别调整 */
+.theme-metro .main-container {
+    border: 2px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+.theme-metro input {
+    border: 2px solid var(--glass-border) !important;
+}
+
+/* Aero主题输入框特别效果 */
+.theme-aero input,
+.theme-aero .pin-input {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) !important;
+}
