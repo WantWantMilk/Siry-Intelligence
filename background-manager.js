@@ -114,32 +114,32 @@
             document.head.appendChild(styleTag);
         }
 
-        // 动态生成CSS
+        // 动态生成CSS - 使用高优先级规则
         let cssRules = '';
         if (bgConfig.url) {
-            // 有背景图片的情况
+            // 【核心修正】为body本身直接添加背景，并叠加白色遮罩确保文字可读
             cssRules = `
-                .theme-active body {
-                    background-image: url("${bgConfig.url}") !important;
+                body.theme-active {
+                    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url("${bgConfig.url}") !important;
                     background-size: cover !important;
                     background-position: center !important;
                     background-attachment: fixed !important;
-                    background-blend-mode: overlay !important;
-                    /* 在原主题渐变上叠加图片，增强可读性 */
-                    background-color: rgba(255,255,255,0.7) !important;
+                    background-repeat: no-repeat !important;
+                    /* 保留主题原有的渐变作为后备色 */
+                    background-color: transparent !important;
                 }
-                /* 为主容器添加更通透的毛玻璃，确保文字可读 */
-                .theme-active .main-container {
-                    background: rgba(255, 255, 255, 0.15) !important;
+                /* 增强主容器的玻璃通透感，以适配背景图 */
+                body.theme-active .main-container {
+                    background: rgba(255, 255, 255, 0.18) !important;
                     backdrop-filter: blur(25px) saturate(180%) !important;
+                    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
                 }
             `;
         } else {
-            // 无背景图片，恢复主题默认
+            // 选择“无背景”时，彻底移除图片并恢复主题
             cssRules = `
-                .theme-active body {
+                body.theme-active {
                     background-image: none !important;
-                    background-color: transparent !important;
                 }
             `;
         }
