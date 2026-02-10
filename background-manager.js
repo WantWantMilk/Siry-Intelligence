@@ -22,7 +22,7 @@
         },
         {
             id: 'night_sky', // 示例3：夜空
-            name: '🌌 星空',
+            name: '星空',
             url: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w-1350&q=80'
         }
         // 您可以继续在此处添加更多背景...
