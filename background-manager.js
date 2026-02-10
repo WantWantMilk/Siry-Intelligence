@@ -23,32 +23,32 @@
             id: 'narutoweishou',
             name: '漩涡鸣人-尾兽化',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/43_241010_JP.jpg'
-        }
+        },
         {
-            id: ' narutoone',
+            id: 'narutoone',
             name: '漩涡鸣人1',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/91_251101_wp_jp.jpg'
-        }
+        },
         {
             id: 'narutotwo',
             name: '漩涡鸣人2',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/106_260201_wp_jp.jpg'
-        }
+        },
         {
             id: 'narutothree',
             name: '漩涡鸣人3',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/83_250901_wp_jp.jpg'
-        }
+        },
         {
             id: 'mingzuo',
             name: '漩涡鸣人·宇智波佐助',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/78_250801_wp_jp.jpg'
-        }
+        },
         {
-            id: ' Kakashi',
+            id: 'Kakashi',
             name: '旗木卡卡西',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/85_250915_jp.jpg'
-        }
+        },
         // 您可以继续在此处添加更多背景...
         // 格式：{ id: '自定义英文ID', name: '🌠 显示名称', url: '您的图片链接' }
     ];
