@@ -40,6 +40,8 @@
     <div class="ie-warning">
         <p>检测到您正在使用旧版浏览器。为了最佳体验，正在为您跳转至<a id="ie-redirect" href="ie.html">兼容模式</a>。</p>
     </div>
+    <!-- 新增：主题样式文件 -->
+    <link rel="stylesheet" href="themes.css">
 <style>
         /* 毛玻璃主容器 */
         .main-container {
@@ -496,5 +498,8 @@
             if (e.target === this) closeModal();
         });
     </script>
+    <!-- 新增：主题切换功能 -->
+    <script src="theme-switcher.js"></script>
+    <style>body { transition: background 0.5s ease, color 0.3s ease; }</style>
 </body>
 </html>
