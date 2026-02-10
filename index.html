@@ -292,7 +292,7 @@
                 <h2>🔐 口令验证</h2>
                 <p>请输入通行口令以唤醒Siry</p>
                 <div class="hint">
-                    <p><strong>问题：</strong>高明锐的外号是什么？</p>
+                    <p><strong>问题：</strong>高明锐^的外号是什么？</p>
                     <p><strong>提示：</strong>答案是一个英文单词（不区分大小写）。你有三次尝试机会。</p>
                     <p>若连续三次失败，则需要验证长PIN码。</p>
                 </div>
@@ -317,7 +317,7 @@
         </div>
 
         <div class="footer">
-            <p>🚨 免责声明：AI生成的内容可能不准确、不完整或有误导性，请谨慎鉴别。 | 📜 本项目基于 AGPL-3.0 许可证开源。</p>
+            <p>🚨 免责声明：AI生成的内容可能不准确、不完整或有误导性，请谨慎鉴别。 | 📜 本项目基于 AGPL-3.0 许可证开源。｜^姓名“高明锐”的使用已获得本人授权。如需查看授权许可，请联系：lbjexam@outlook.com</p>
             <div class="footer-links">
                 <a href="ie.html" target="_blank">🌐 兼容模式 (用于旧版浏览器)</a>
                 <a href="#" onclick="showModal()">📄 查看完整法律声明</a>
@@ -331,9 +331,9 @@
             <h2>⚠️ 法律声明与使用条款</h2>
             <div class="modal-content">
                 <p><strong>1. 内容免责</strong><br>
-                本聊天机器人“Siry (小明锐)”生成的所有内容均由人工智能模型产生，可能存在事实性错误、偏见或不准确信息。使用者应对生成内容进行独立判断，开发者不对其准确性、完整性或适用性承担任何责任。</p>
+                本聊天机器人“Siry (小明锐)”生成的所有内容均由人工智能模型产生，可能存在事实性错误、偏见或不准确信息。使用者应对生成内容进行独立判断，开发者不对其准确性、完整性或适用性承担任何责任。本人工智能模型已严格按照《生成式人工智能服务管理暂行办法》要求进行备案，符合国家相关技术标准和安全要求，备案号： Beijing-ChatGLM-20230821。</p>
                 <p><strong>2. 数据与隐私</strong><br>
-                本页面为纯静态页面，聊天记录仅保存在您的浏览器本地（LocalStorage），不会被传输到我们的服务器。但请注意，您输入的问题和AI的回答会发送至第三方AI API服务商（硅基流动）。</p>
+                本页面为HTML静态页面，聊天记录仅保存在您的浏览器本地（LocalStorage），不会被传输到我们的服务器。</p>
                 <p><strong>3. 许可证</strong><br>
                 本网站前端代码基于 <strong>GNU Affero General Public License v3.0 (AGPL-3.0)</strong> 许可证开源。这意味着您可以自由地使用、修改和分发代码，但如果您在网络中提供基于此代码的服务，则必须公开其完整的源代码。</p>
                 <p><strong>4. 使用限制</strong><br>
@@ -351,7 +351,7 @@
             API_KEY: 'sk-xzxelritwcuswjbfgwqtcdqsemtlnluceaurjscdkyezjpik', // 你的硅基流动API密钥
             MODEL: 'THUDM/GLM-4-9B-0414', // 你的模型名称
             API_URL: 'https://api.siliconflow.cn/v1/chat/completions',
-            SYSTEM_PROMPT: `你是一个名叫Siry（小明锐）的AI助手，名字含义是"Silly Harmony"。你兼具幽默感和敏锐的洞察力，像一个小丑一样有趣，但回答问题总是清晰、直接、明快。请全程使用中文与我的朋友进行轻松、友好的对话，回答尽量简洁。`
+            SYSTEM_PROMPT: `你是一个名叫Siry（小明锐）的AI助手，名字含义是"Silly Harmony"。你兼具幽默感和敏锐的洞察力，像一个小丑一样有趣，但回答问题总是清晰、搞笑、直接、明快。请全程使用中文与我的朋友进行轻松、友好的对话。`
         };
         // ====================================================================
 
@@ -432,7 +432,7 @@
             if (!message) return;
             addMessage('user', message);
             inputEl.value = '';
-            const thinkingId = addMessage('bot', '思考中...', true);
+            const thinkingId = addMessage('bot', '小明锐努力思考中...', true);
             try {
                 const response = await fetch(CONFIG.API_URL, {
                     method: 'POST',
