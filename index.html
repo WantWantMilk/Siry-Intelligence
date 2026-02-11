@@ -39,14 +39,14 @@
     <div class="ie-warning">
         <p>检测到您正在使用旧版浏览器。为了最佳体验，正在为您跳转至<a id="ie-redirect" href="ie.html">兼容模式</a>。</p>
     </div>
-    <!-- 新增：主题样式文件 -->
+    <!-- 主题样式文件 -->
     <link rel="stylesheet" href="themes.css">
-<style>
-        /* 毛玻璃主容器 */
+    <style>
+        /* 毛玻璃主容器 - 固定高度版本 */
         .main-container {
             width: 100%;
             max-width: 900px;
-            min-height: 85vh;
+            height: 85vh; /* 固定高度，不再随内容变长 */
             background: var(--glass-bg);
             border-radius: var(--radius-large);
             border: 1px solid var(--glass-border);
@@ -80,16 +80,17 @@
         }
         .header p { opacity: 0.9; font-size: 1rem; }
 
-        /* 内容区通用样式 */
+        /* 内容区 - 修复Flex滚动问题 */
         .content-area {
             flex: 1;
             padding: 30px;
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
+            min-height: 0;      /* 关键：允许子元素正确收缩 */
+            overflow: hidden;   /* 防止外部滚动条，滚动交给内部 .chat-messages */
         }
     </style>
-<style>
+    <style>
         /* 验证界面样式 */
         #authSection { text-align: center; }
         .auth-card {
@@ -144,7 +145,7 @@
         #chatSection { display: none; flex-direction: column; height: 100%; }
         .chat-messages {
             flex: 1;
-            overflow-y: auto;
+            overflow-y: auto;   /* 只有这里出现滚动条 */
             padding: 20px;
             margin-bottom: 25px;
             background: rgba(255, 255, 255, 0.5);
@@ -204,7 +205,7 @@
         #sendBtn:hover { transform: scale(1.05); }
         .thinking { opacity: 0.7; font-style: italic; text-align: center; padding: 20px; }
     </style>
-<style>
+    <style>
         /* 页脚样式 */
         .footer {
             padding: 25px;
@@ -265,10 +266,10 @@
         }
         .modal-close-btn:hover { background: #5a57a5; }
 
-        /* 响应式设计 */
+        /* 响应式设计 - 同步固定高度 */
         @media (max-width: 768px) {
             body { padding: 15px; }
-            .main-container { min-height: 90vh; border-radius: 20px; }
+            .main-container { height: 90vh; border-radius: 20px; } /* 改为固定高度 */
             .header, .content-area { padding: 25px 20px; }
             .chat-messages { padding: 15px; }
             .message { max-width: 95%; }
@@ -326,7 +327,8 @@
         </div>
     </div>
     <!-- 主容器结束 -->
-<!-- 免责声明模态框 -->
+    
+    <!-- 免责声明模态框 -->
     <div id="legalModal" class="modal-overlay" style="display: none;">
         <div class="modal">
             <h2>⚠️ 法律声明与使用条款</h2>
@@ -346,7 +348,8 @@
             <button class="modal-close-btn" onclick="closeModal()">我已阅读并理解</button>
         </div>
     </div>
-<script>
+    
+    <script>
         // ==================== 【请仔细检查并修改此处配置】 ====================
         const CONFIG = {
             API_KEY: 'sk-xzxelritwcuswjbfgwqtcdqsemtlnluceaurjscdkyezjpik', // 你的硅基流动API密钥
@@ -426,7 +429,8 @@
             document.getElementById('userInput').focus();
             closeModal(); // 确保法律声明弹窗已关闭
         }
-// 聊天功能
+        
+        // 聊天功能
         async function sendMessage() {
             const inputEl = document.getElementById('userInput');
             const message = inputEl.value.trim();
@@ -497,9 +501,9 @@
             if (e.target === this) closeModal();
         });
     </script>
-    <!-- 新增：主题切换功能 -->
+    <!-- 主题切换功能 -->
     <script src="theme-switcher.js"></script>
-    <!-- 新增：背景图片管理 -->
+    <!-- 背景图片管理（独立透明开关版） -->
     <script src="background-manager.js"></script>
     <style>body { transition: background 0.5s ease, color 0.3s ease; }</style>
 </body>
