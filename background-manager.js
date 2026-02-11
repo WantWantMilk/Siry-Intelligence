@@ -6,12 +6,12 @@
     const backgroundOptions = [
         {
             id: 'none',
-            name: '🔄 无背景 (使用主题默认)',
+            name: '无背景(默认)',
             url: null
         },
         {
             id: 'full_transparent',
-            name: '🪟 全透明 (纯净展示)',
+            name: '纯净预览',
             url: null
         },
         {
@@ -20,23 +20,28 @@
             url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'
         },
         {
+            id: 'narutohorse',
+            name: '漩涡鸣人·马年限定',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
+        },
+        {
             id: 'narutoweishou',
             name: '漩涡鸣人·暴怒',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/43_241010_JP.jpg'
         },
         {
             id: 'narutoone',
-            name: '漩涡鸣人1',
+            name: '漩涡鸣人·火影',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/91_251101_wp_jp.jpg'
         },
         {
             id: 'narutotwo',
-            name: '漩涡鸣人2',
+            name: '漩涡鸣人·疾风传',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/106_260201_wp_jp.jpg'
         },
         {
             id: 'narutothree',
-            name: '漩涡鸣人3',
+            name: '漩涡鸣人·第一卷',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/83_250901_wp_jp.jpg'
         },
         {
@@ -48,6 +53,26 @@
             id: 'Kakashi',
             name: '旗木卡卡西',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/85_250915_jp.jpg'
+        },
+        {
+            id: 'animeNARUTO',
+            name: '火影忍者',
+            url: 'https://naruto-official.com/anime/series/naruto2_visual.webp'
+        },
+        {
+            id: 'minato',
+            name: '波风水门',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/104_260125_jp.jpg'
+        },
+        {
+            id: 'hiddenleaf',
+            name: '木叶村',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/101_250101_wp_jp.jpg'
+        },
+        {
+            id: 'Christ',
+            name: '火影忍者·圣诞节限定',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/99_251225_jp.jpg'
         },
         // 您可以继续在此处添加更多背景...
         // 格式：{ id: '自定义英文ID', name: '🌠 显示名称', url: '您的图片链接' }
