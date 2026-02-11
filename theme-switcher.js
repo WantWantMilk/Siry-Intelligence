@@ -2,10 +2,10 @@
 (function() {
     'use strict';
     const themes = [
-        { id: 'colourful', name: '🎨 彩色 (默认)' },
-        { id: 'aero', name: '🪟 Aero (Win7玻璃)' },
-        { id: 'elegant', name: '🎩 Elegant (优雅)' },
-        { id: 'metro', name: '🧱 Metro (Win10现代)' }
+        { id: 'colourful', name: 'Colourful(默认)' },
+        { id: 'aero', name: 'Aero(无法使用透明背景)' },
+        { id: 'elegant', name: 'Elegant(无法使用透明背景)' },
+        { id: 'metro', name: 'Metro' }
     ];
     function init() {
         createThemeSelector();
