@@ -21,7 +21,7 @@
         },
         {
             id: 'narutoweishou',
-            name: '漩涡鸣人-尾兽化',
+            name: '漩涡鸣人·暴怒',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/43_241010_JP.jpg'
         },
         {
