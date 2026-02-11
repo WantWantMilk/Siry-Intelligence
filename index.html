@@ -60,11 +60,11 @@
             .main-container { background: rgba(255, 255, 255, 0.92); }
         }
 
-        /* ----- 头部：精简设计，参考DeepSeek ----- */
+        /* ----- 头部：精简设计 ----- */
         .header {
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             color: var(--text-light);
-            padding: 12px 24px;  /* 大幅减小纵向高度 */
+            padding: 12px 24px;
             text-align: center;
             border-bottom: 1px solid var(--glass-border);
             display: flex;
@@ -85,22 +85,25 @@
             margin: 0;
         }
 
-        /* ----- 内容区：正确收缩，滚动由消息区承担 ----- */
+        /* ----- 内容区：修复验证按钮显示不全问题 ----- */
         .content-area {
             flex: 1;
             padding: 20px 25px;
             display: flex;
             flex-direction: column;
             min-height: 0;
-            overflow: hidden;
+            /* [!] 修改：允许垂直滚动，防止验证卡片内容超出时被裁剪 */
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
-        /* ----- 验证卡片（保持不变）----- */
+        /* ----- 验证卡片（已压缩内边距）----- */
         #authSection { text-align: center; }
         .auth-card {
             background: rgba(255, 255, 255, 0.7);
             border-radius: var(--radius-small);
-            padding: 30px 25px;
+            /* [!] 减小垂直内边距，让卡片更紧凑 */
+            padding: 25px 20px;
             margin: 10px auto;
             max-width: 500px;
             border: 1px solid var(--glass-border);
@@ -109,7 +112,8 @@
         .auth-card .hint {
             color: #666;
             font-size: 0.95rem;
-            margin: 20px 0;
+            /* [!] 减小上下外边距 */
+            margin: 15px 0;
             padding: 15px;
             background: rgba(0, 0, 0, 0.03);
             border-radius: 8px;
@@ -180,7 +184,7 @@
         .message-content { padding: 14px 20px; }
         .message-sender { font-size: 0.8rem; opacity: 0.7; margin-bottom: 4px; }
 
-        /* ----- 一体化输入框（发送按钮嵌入）----- */
+        /* ----- 一体化输入框 ----- */
         .input-area {
             display: flex;
             align-items: center;
@@ -319,7 +323,7 @@
                     <p>在右上角选择主题和背景图片。注：先选择背景图片，然后再次点击背景图片选项框里的“纯净预览”可实现纯净预览。</p>
                 </div>
                 <input type="text" id="pinInput" class="pin-input" placeholder="请在此输入答案或长PIN码..." autocomplete="off">
-                <button onclick="checkAnswer()" class="submit-btn">好</button>
+                <button onclick="checkAnswer()" class="submit-btn">提交验证</button>
                 <div id="authHint"></div>
             </div>
 
