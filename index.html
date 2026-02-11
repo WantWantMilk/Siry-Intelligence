@@ -30,23 +30,21 @@
             color: var(--text-primary);
             line-height: 1.6;
         }
-        /* 警告：为IE用户跳转 */
         .ie-warning { display: none; }
     </style>
 </head>
 <body>
-    <!-- 专为IE用户显示的警告和跳转链接 -->
     <div class="ie-warning">
         <p>检测到您正在使用旧版浏览器。为了最佳体验，正在为您跳转至<a id="ie-redirect" href="ie.html">兼容模式</a>。</p>
     </div>
-    <!-- 主题样式文件 -->
     <link rel="stylesheet" href="themes.css">
+
     <style>
-        /* 毛玻璃主容器 - 固定高度版本 */
+        /* ----- 主容器：固定高度，毛玻璃效果 ----- */
         .main-container {
             width: 100%;
             max-width: 900px;
-            height: 85vh; /* 固定高度，不再随内容变长 */
+            height: 85vh;
             background: var(--glass-bg);
             border-radius: var(--radius-large);
             border: 1px solid var(--glass-border);
@@ -62,42 +60,48 @@
             .main-container { background: rgba(255, 255, 255, 0.92); }
         }
 
-        /* 头部样式 */
+        /* ----- 头部：精简设计，参考DeepSeek ----- */
         .header {
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             color: var(--text-light);
-            padding: 28px 32px;
+            padding: 12px 24px;  /* 大幅减小纵向高度 */
             text-align: center;
             border-bottom: 1px solid var(--glass-border);
-        }
-        .header h1 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
-        .header p { opacity: 0.9; font-size: 1rem; }
+        .header h1 {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+        }
+        .header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+            margin: 0;
+        }
 
-        /* 内容区 - 修复Flex滚动问题 */
+        /* ----- 内容区：正确收缩，滚动由消息区承担 ----- */
         .content-area {
             flex: 1;
-            padding: 30px;
+            padding: 20px 25px;
             display: flex;
             flex-direction: column;
-            min-height: 0;      /* 关键：允许子元素正确收缩 */
-            overflow: hidden;   /* 防止外部滚动条，滚动交给内部 .chat-messages */
+            min-height: 0;
+            overflow: hidden;
         }
-    </style>
-    <style>
-        /* 验证界面样式 */
+
+        /* ----- 验证卡片（保持不变）----- */
         #authSection { text-align: center; }
         .auth-card {
             background: rgba(255, 255, 255, 0.7);
             border-radius: var(--radius-small);
-            padding: 40px 30px;
-            margin: 20px auto;
+            padding: 30px 25px;
+            margin: 10px auto;
             max-width: 500px;
             border: 1px solid var(--glass-border);
         }
@@ -105,7 +109,7 @@
         .auth-card .hint {
             color: #666;
             font-size: 0.95rem;
-            margin: 25px 0;
+            margin: 20px 0;
             padding: 15px;
             background: rgba(0, 0, 0, 0.03);
             border-radius: 8px;
@@ -113,11 +117,11 @@
         }
         .pin-input, .chat-input {
             width: 100%;
-            padding: 18px 20px;
-            margin: 15px 0;
+            padding: 14px 20px;
+            margin: 12px 0;
             border: 2px solid #ddd;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: all 0.3s;
             outline: none;
         }
@@ -129,9 +133,9 @@
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             color: white;
             border: none;
-            padding: 18px 45px;
+            padding: 14px 40px;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -141,19 +145,19 @@
         .submit-btn:active { transform: translateY(0); }
         #authHint { margin-top: 20px; min-height: 24px; color: #e74c3c; font-weight: 500; }
 
-        /* 聊天界面样式（默认隐藏） */
+        /* ----- 聊天区域 ----- */
         #chatSection { display: none; flex-direction: column; height: 100%; }
         .chat-messages {
             flex: 1;
-            overflow-y: auto;   /* 只有这里出现滚动条 */
-            padding: 20px;
-            margin-bottom: 25px;
+            overflow-y: auto;
+            padding: 15px;
+            margin-bottom: 15px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: var(--radius-small);
             border: 1px solid rgba(255, 255, 255, 0.6);
         }
         .message {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             max-width: 85%;
             clear: both;
             animation: fadeIn 0.3s ease;
@@ -173,60 +177,71 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             float: left;
         }
-        .message-content { padding: 16px 22px; }
-        .message-sender { font-size: 0.85rem; opacity: 0.7; margin-bottom: 5px; }
+        .message-content { padding: 14px 20px; }
+        .message-sender { font-size: 0.8rem; opacity: 0.7; margin-bottom: 4px; }
+
+        /* ----- 一体化输入框（发送按钮嵌入）----- */
         .input-area {
             display: flex;
-            gap: 15px;
-            padding: 10px 5px;
-            background: transparent;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            padding: 0 4px 0 16px;
+            transition: border 0.3s, box-shadow 0.3s;
+            margin-top: 5px;
+        }
+        .input-area:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(120, 119, 198, 0.2);
         }
         #userInput {
             flex: 1;
-            padding: 18px 25px;
-            border: 2px solid #ddd;
-            border-radius: 50px;
-            font-size: 1.05rem;
-            transition: border 0.3s;
-            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            background: transparent;
+            padding: 14px 0;
+            font-size: 1rem;
+            outline: none;
         }
         #sendBtn {
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             color: white;
             border: none;
-            width: 60px;
-            height: 60px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
             transition: transform 0.2s;
+            margin-left: 8px;
         }
         #sendBtn:hover { transform: scale(1.05); }
-        .thinking { opacity: 0.7; font-style: italic; text-align: center; padding: 20px; }
-    </style>
-    <style>
-        /* 页脚样式 */
+
+        /* ----- 页脚 ----- */
         .footer {
-            padding: 25px;
+            padding: 16px 20px;
             text-align: center;
             border-top: 1px solid var(--glass-border);
             background: rgba(255, 255, 255, 0.4);
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
-        .footer-links { margin-top: 10px; }
+        .footer-links { margin-top: 8px; }
         .footer a {
             color: var(--primary-color);
             text-decoration: none;
-            margin: 0 15px;
-            padding: 8px 16px;
+            margin: 0 10px;
+            padding: 6px 12px;
             border-radius: 20px;
             transition: background 0.3s;
         }
         .footer a:hover { background: rgba(120, 119, 198, 0.1); text-decoration: underline; }
 
-        /* 模态框（免责声明）样式 */
+        /* ----- 模态框（免责声明）----- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -246,46 +261,50 @@
             overflow-y: auto;
             border-radius: var(--radius-large);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            padding: 35px;
+            padding: 30px;
             animation: modalAppear 0.4s ease;
         }
         @keyframes modalAppear { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .modal h2 { color: #2c3e50; margin-bottom: 20px; }
-        .modal-content p { margin-bottom: 18px; }
+        .modal-content p { margin-bottom: 16px; }
         .modal-close-btn {
             background: var(--primary-color);
             color: white;
             border: none;
-            padding: 15px 35px;
+            padding: 12px 30px;
             border-radius: 50px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             cursor: pointer;
             display: block;
-            margin: 30px auto 0;
+            margin: 25px auto 0;
             transition: background 0.3s;
         }
         .modal-close-btn:hover { background: #5a57a5; }
 
-        /* 响应式设计 - 同步固定高度 */
+        /* ----- 响应式设计 ----- */
         @media (max-width: 768px) {
-            body { padding: 15px; }
-            .main-container { height: 90vh; border-radius: 20px; } /* 改为固定高度 */
-            .header, .content-area { padding: 25px 20px; }
-            .chat-messages { padding: 15px; }
+            body { padding: 12px; }
+            .main-container { height: 90vh; border-radius: 20px; }
+            .header { padding: 10px 18px; }
+            .header h1 { font-size: 1.4rem; }
+            .header p { font-size: 0.8rem; }
+            .content-area { padding: 15px; }
+            .chat-messages { padding: 12px; }
             .message { max-width: 95%; }
-            .input-area { flex-direction: column; gap: 12px; }
-            #sendBtn { align-self: flex-end; width: 55px; height: 55px; }
-            .footer { padding: 20px 15px; }
-            .footer a { display: inline-block; margin: 5px 10px; }
+            .input-area { padding: 0 4px 0 14px; }
+            #userInput { padding: 12px 0; font-size: 0.95rem; }
+            #sendBtn { width: 42px; height: 42px; font-size: 1.1rem; }
+            .footer { padding: 14px 12px; }
+            .footer a { display: inline-block; margin: 4px 8px; }
         }
     </style>
-</head>
-<body>
+
     <!-- 主容器开始 -->
     <div class="main-container">
+        <!-- 精简头部 -->
         <div class="header">
-            <h1><span>🤡</span> Siry 小明锐聊天室 <span>✨</span></h1>
-            <p>Silly Harmony · 一个兼具幽默与敏锐的AI伙伴</p>
+            <h1><span>🤡</span> Siry 小明锐</h1>
+            <p>Silly Harmony · 幽默敏锐</p>
         </div>
 
         <div class="content-area">
@@ -297,6 +316,7 @@
                     <p><strong>问题：</strong>高明锐^的外号是什么？</p>
                     <p><strong>提示：</strong>答案是一个英文单词（不区分大小写）。你有三次尝试机会。</p>
                     <p>若连续三次失败，则需要验证长PIN码。</p>
+                    <p>在右上角选择主题和背景图片。注：先选择背景图片，然后再次点击背景图片选项框里的“纯净预览”可实现纯净预览。</p>
                 </div>
                 <input type="text" id="pinInput" class="pin-input" placeholder="请在此输入答案或长PIN码..." autocomplete="off">
                 <button onclick="checkAnswer()" class="submit-btn">提交验证</button>
@@ -308,56 +328,51 @@
                 <div class="chat-messages" id="chatMessages">
                     <div class="message bot-message">
                         <div class="message-sender">Siry</div>
-                        <div class="message-content">你好！我是小明锐 (Siry)，一个有点幽默又希望保持敏锐的助手。验证成功，我们可以开始聊天了！</div>
+                        <div class="message-content">你好！我是小明锐 (Siry)，验证成功，我们可以开始聊天了！</div>
                     </div>
                 </div>
+                <!-- 一体化输入框 -->
                 <div class="input-area">
-                    <input type="text" id="userInput" class="chat-input" placeholder="输入你想对Siry说的话..." autocomplete="off">
+                    <input type="text" id="userInput" placeholder="输入你想对Siry说的话..." autocomplete="off">
                     <button id="sendBtn" onclick="sendMessage()">➤</button>
                 </div>
             </div>
         </div>
 
+        <!-- 页脚 -->
         <div class="footer">
-            <p>AI生成的内容可能不准确。基于 AGPL-3.0 许可证。</p>
+            <p>🚨 AI生成内容可能不准确，请谨慎鉴别。 | 📜 AGPL-3.0 开源｜^姓名“高明锐”已获授权</p>
             <div class="footer-links">
-                <a href="ie.html" target="_blank">🌐 兼容模式 (用于旧版浏览器)</a>
-                <a href="#" onclick="showModal()">📄 查看完整法律声明</a>
+                <a href="ie.html" target="_blank">🌐 兼容模式</a>
+                <a href="#" onclick="showModal()">📄 完整法律声明</a>
             </div>
         </div>
     </div>
-    <!-- 主容器结束 -->
-    
+
     <!-- 免责声明模态框 -->
     <div id="legalModal" class="modal-overlay" style="display: none;">
         <div class="modal">
             <h2>⚠️ 法律声明与使用条款</h2>
             <div class="modal-content">
-                <p><strong>1. 内容免责</strong><br>
-                本聊天机器人“Siry (小明锐)”生成的所有内容均由人工智能模型产生，可能存在事实性错误、偏见或不准确信息。使用者应对生成内容进行独立判断，开发者不对其准确性、完整性或适用性承担任何责任。本人工智能模型已严格按照《生成式人工智能服务管理暂行办法》要求进行备案，符合国家相关技术标准和安全要求，备案号： Beijing-ChatGLM-20230821。</p>
-                <p><strong>2. 数据与隐私</strong><br>
-                本页面为HTML静态页面，聊天记录仅保存在您的浏览器本地（LocalStorage），不会被传输到我们的服务器。</p>
-                <p><strong>3. 许可证</strong><br>
-                本网站前端代码基于 <strong>GNU Affero General Public License v3.0 (AGPL-3.0)</strong> 许可证开源。这意味着您可以自由地使用、修改和分发代码，但如果您在网络中提供基于此代码的服务，则必须公开其完整的源代码。</p>
-                <p><strong>4. 使用限制</strong><br>
-                禁止使用本服务进行任何违法、欺诈、骚扰或侵犯他人权利的活动。此项目仅供个人学习与娱乐使用。</p>
-                <p><strong>5. 服务变更</strong><br>
-                开发者保留随时修改或终止服务的权利，恕不另行通知。</p>
+                <p><strong>1. 内容免责</strong><br>本聊天机器人“Siry (小明锐)”生成的所有内容均由人工智能模型产生，可能存在事实性错误、偏见或不准确信息。使用者应对生成内容进行独立判断，开发者不对其准确性、完整性或适用性承担任何责任。本人工智能模型已严格按照《生成式人工智能服务管理暂行办法》要求进行备案，符合国家相关技术标准和安全要求，备案号： Beijing-ChatGLM-20230821。</p>
+                <p><strong>2. 数据与隐私</strong><br>本页面为HTML静态页面，聊天记录仅保存在您的浏览器本地（LocalStorage），不会被传输到我们的服务器。</p>
+                <p><strong>3. 许可证</strong><br>本网站前端代码基于 <strong>GNU Affero General Public License v3.0 (AGPL-3.0)</strong> 许可证开源。这意味着您可以自由地使用、修改和分发代码，但如果您在网络中提供基于此代码的服务，则必须公开其完整的源代码。</p>
+                <p><strong>4. 使用限制</strong><br>禁止使用本服务进行任何违法、欺诈、骚扰或侵犯他人权利的活动。此项目仅供个人学习与娱乐使用。</p>
+                <p><strong>5. 服务变更</strong><br>开发者保留随时修改或终止服务的权利，恕不另行通知。</p>
                 <p>继续使用即表示您理解并同意上述条款。</p>
             </div>
             <button class="modal-close-btn" onclick="closeModal()">我已阅读并理解</button>
         </div>
     </div>
-    
+
     <script>
-        // ==================== 【请仔细检查并修改此处配置】 ====================
+        // ==================== 配置区 ====================
         const CONFIG = {
-            API_KEY: 'sk-xzxelritwcuswjbfgwqtcdqsemtlnluceaurjscdkyezjpik', // 你的硅基流动API密钥
-            MODEL: 'THUDM/GLM-4-9B-0414', // 你的模型名称
+            API_KEY: 'sk-xzxelritwcuswjbfgwqtcdqsemtlnluceaurjscdkyezjpik',
+            MODEL: 'THUDM/GLM-4-9B-0414',
             API_URL: 'https://api.siliconflow.cn/v1/chat/completions',
             SYSTEM_PROMPT: `你是一个名叫Siry（小明锐）的AI助手，名字含义是"Silly Harmony"。你兼具幽默感和敏锐的洞察力，像一个小丑一样有趣，但回答问题总是清晰、搞笑、直接、明快。请全程使用中文与我的朋友进行轻松、友好的对话。`
         };
-        // ====================================================================
 
         // 口令验证逻辑
         let tryCount = 0;
@@ -365,7 +380,6 @@
         const LONG_PIN = 'APENX-92JXL-OQ72J-4625K-NARUTO';
         const STORAGE_KEY = 'siry_auth_token';
 
-        // 生成一个简易的“访客指纹”（模拟IP识别，实际为浏览器指纹）
         function generateVisitorFingerprint() {
             const str = navigator.userAgent + navigator.language + screen.width + screen.height;
             let hash = 0;
@@ -378,9 +392,7 @@
         }
         const visitorId = generateVisitorFingerprint();
 
-        // 页面加载时检查是否已通过验证
         window.onload = function() {
-            // 检测IE浏览器并跳转
             if (window.document.documentMode) {
                 document.querySelector('.ie-warning').style.display = 'block';
                 window.location.href = "ie.html";
@@ -388,9 +400,9 @@
             }
             const savedToken = localStorage.getItem(STORAGE_KEY);
             if (savedToken && savedToken === visitorId) {
-                showChatInterface(); // 如果已验证过，直接进入聊天
+                showChatInterface();
             } else {
-                showModal(); // 否则，先显示法律声明
+                showModal();
             }
         };
 
@@ -399,7 +411,6 @@
             const hint = document.getElementById('authHint');
             tryCount++;
             if (tryCount <= 3) {
-                // 前三次尝试短答案
                 if (input.toLowerCase() === CORRECT_ANSWER) {
                     authSuccess();
                 } else {
@@ -407,7 +418,6 @@
                     if (tryCount === 3) hint.textContent += ' 三次已用尽，请输入长PIN码。';
                 }
             } else {
-                // 后续尝试长PIN
                 if (input === LONG_PIN) {
                     authSuccess();
                 } else {
@@ -419,7 +429,7 @@
         function authSuccess() {
             document.getElementById('authHint').textContent = '验证成功！正在进入聊天室...';
             document.getElementById('authHint').style.color = '#27ae60';
-            localStorage.setItem(STORAGE_KEY, visitorId); // 保存验证状态
+            localStorage.setItem(STORAGE_KEY, visitorId);
             setTimeout(showChatInterface, 800);
         }
 
@@ -427,9 +437,9 @@
             document.getElementById('authSection').style.display = 'none';
             document.getElementById('chatSection').style.display = 'flex';
             document.getElementById('userInput').focus();
-            closeModal(); // 确保法律声明弹窗已关闭
+            closeModal();
         }
-        
+
         // 聊天功能
         async function sendMessage() {
             const inputEl = document.getElementById('userInput');
@@ -484,26 +494,24 @@
                 msgEl.querySelector('.message-content').style.fontStyle = 'normal';
             }
         }
-        // 输入框回车发送
         document.getElementById('userInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') sendMessage();
         });
 
-        // 模态框（法律声明）控制
+        // 模态框控制
         function showModal() {
             document.getElementById('legalModal').style.display = 'flex';
         }
         function closeModal() {
             document.getElementById('legalModal').style.display = 'none';
         }
-        // 点击模态框外部关闭
         document.getElementById('legalModal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
     </script>
-    <!-- 主题切换功能 -->
+
+    <!-- 主题切换与背景管理 -->
     <script src="theme-switcher.js"></script>
-    <!-- 背景图片管理（独立透明开关版） -->
     <script src="background-manager.js"></script>
     <style>body { transition: background 0.5s ease, color 0.3s ease; }</style>
 </body>
