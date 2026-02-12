@@ -16,13 +16,13 @@
         },
         {
             id: 'narutohorse',
-            name: '漩涡鸣人·马年限定',
+            name: '漩涡鸣人「马年限定」',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
         },
         {
             id: 'gaomingrui',
-            name: '高明锐·外道魔像(即将推出)',
-            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
+            name: '高明锐「回眸一笑百霉生」',
+            url: 'https://youke.xn--y7xa690gmna.cn/s1/2026/02/12/698dbfa6eda2f.webp'
         },
         {
             id: 'chenyufan',
@@ -31,28 +31,38 @@
         },
         {
             id: 'teachers',
-            name: '邓伟·邱兴华·谭祥胜(即将推出)',
-            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
+            name: '邓伟·邱兴华·谭祥胜',
+            url: 'https://youke.xn--y7xa690gmna.cn/s1/2026/02/12/698dbfcfe287c.webp'
         },
         {
             id: 'narutoweishou',
-            name: '漩涡鸣人·暴怒',
+            name: '漩涡鸣人「暴怒」',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/43_241010_JP.jpg'
         },
         {
             id: 'narutoone',
-            name: '漩涡鸣人·火影',
+            name: '漩涡鸣人「火影」',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/91_251101_wp_jp.jpg'
         },
         {
             id: 'narutotwo',
-            name: '漩涡鸣人·疾风传',
+            name: '漩涡鸣人「仙人模式」',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/106_260201_wp_jp.jpg'
         },
         {
             id: 'narutothree',
-            name: '漩涡鸣人·第一卷',
+            name: '漩涡鸣人「卷首」',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/83_250901_wp_jp.jpg'
+        },
+        {
+            id: 'narutoliyu',
+            name: '漩涡鸣人「鲤鱼旗」',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/12_240503_JP.jpg'
+        },
+        {
+            id: 'narutojifeng',
+            name: '漩涡鸣人「疾风传」',
+            url: 'https://naruto-official.com/index/char_naruto.webp'
         },
         {
             id: 'mingzuo',
@@ -81,7 +91,7 @@
         },
         {
             id: 'Christ',
-            name: '火影忍者·圣诞节限定',
+            name: '火影忍者「圣诞节限定」',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/99_251225_jp.jpg'
         }
         // 您可以继续在此处添加更多背景...
