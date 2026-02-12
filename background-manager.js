@@ -47,7 +47,7 @@
         {
             id: 'gaomingruizhandou',
             name: '高明锐「战斗」',
-            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/gmrshaxiao.PNG'
+            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/gmr-fight.PNG'
         },
         {
             id: 'gaomingruizhuoyulou',
