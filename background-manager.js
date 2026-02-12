@@ -22,8 +22,13 @@
         {
             id: 'gaomingrui',
             name: '高明锐「回眸一笑百霉生」',
-            url: 'https://youke.xn--y7xa690gmna.cn/s1/2026/02/12/698dbfa6eda2f.webp'
+            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/Gaomingrui250930.jpg'
         },
+//        {
+//            id: 'gaomingrui',
+//            name: '高明锐「回眸一笑百霉生」',
+//            url: 'https://youke.xn--y7xa690gmna.cn/s1/2026/02/12/698dbfa6eda2f.webp'
+//        },
         {
             id: 'chenyufan',
             name: '陈芋帆·校花(即将推出)',
