@@ -20,6 +20,21 @@
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
         },
         {
+            id: 'gaomingrui',
+            name: '高明锐·外道魔像(即将推出)',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
+        },
+        {
+            id: 'chenyufan',
+            name: '陈芋帆·校花(即将推出)',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
+        },
+        {
+            id: 'teachers',
+            name: '邓伟·邱兴华·谭祥胜(即将推出)',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
+        },
+        {
             id: 'narutoweishou',
             name: '漩涡鸣人·暴怒',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/43_241010_JP.jpg'
