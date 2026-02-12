@@ -50,9 +50,14 @@
             url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/gmrshaxiao.PNG'
         },
         {
-            id: 'gaomingruitangxiao',
+            id: 'gaomingruizhuoyulou',
             name: '西街初中「琢玉楼」',
             url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/Xijie3byHarmory2.PNG'
+        },
+        {
+            id: 'gaomingruiyumaoqiu',
+            name: '高明锐「羽毛球」',
+            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/HarmorybyZhaoQuanxin.PNG'
         },
         {
             id: 'narutoweishou',
