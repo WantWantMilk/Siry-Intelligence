@@ -24,20 +24,35 @@
             name: '高明锐「回眸一笑百霉生」',
             url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/Gaomingrui250930.jpg'
         },
-//        {
-//            id: 'gaomingrui',
-//            name: '高明锐「回眸一笑百霉生」',
-//            url: 'https://youke.xn--y7xa690gmna.cn/s1/2026/02/12/698dbfa6eda2f.webp'
-//        },
         {
-            id: 'chenyufan',
-            name: '陈芋帆·校花(即将推出)',
-            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
+            id: 'gaomingruitanxian',
+            name: '高明锐「黑夜探险」',
+            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/IMG_2277.JPG'
         },
         {
-            id: 'teachers',
-            name: '邓伟·邱兴华·谭祥胜',
-            url: 'https://youke.xn--y7xa690gmna.cn/s1/2026/02/12/698dbfcfe287c.webp'
+            id: 'gaomingruibaonu',
+            name: '高明锐「暴怒」',
+            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/gmrbaonu.PNG'
+        },
+        {
+            id: 'gaomingruibuxie',
+            name: '高明锐「不屑」',
+            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/gmr-buxie.PNG'
+        },
+        {
+            id: 'gaomingruitangxiao',
+            name: '高明锐「唐笑」',
+            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/gmrshaxiao.PNG'
+        },
+        {
+            id: 'gaomingruizhandou',
+            name: '高明锐「战斗」',
+            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/gmrshaxiao.PNG'
+        },
+        {
+            id: 'gaomingruitangxiao',
+            name: '西街初中「琢玉楼」',
+            url: 'https://cdn.jsdelivr.net/gh/WantWantMilk/Siry-Intelligence@main/images/Xijie3byHarmory2.PNG'
         },
         {
             id: 'narutoweishou',
@@ -98,7 +113,17 @@
             id: 'Christ',
             name: '火影忍者「圣诞节限定」',
             url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/99_251225_jp.jpg'
-        }
+        },
+        {
+            id: 'chenyufan',
+            name: '陈芋帆·校花(即将推出)',
+            url: 'https://naruto-official.com/special/wallpaper_gallery/wallpaper/jp/102_250101_wp_jp.jpg'
+        },
+        {
+            id: 'teachers',
+            name: '邓伟·邱兴华·谭祥胜',
+            url: 'https://youke.xn--y7xa690gmna.cn/s1/2026/02/12/698dbfcfe287c.webp'
+        },
         // 您可以继续在此处添加更多背景...
         // 格式：{ id: '自定义英文ID', name: '显示名称', url: '图片链接' }
     ];
